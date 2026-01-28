@@ -22,24 +22,6 @@ a {
   /*padding-bottom: 70px;*/
 }
 
-img {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-}
-
-.image-container {
-  aspect-ratio: 16 / 9; /* Sets the shape */
-  width: 100%;
-  overflow: hidden;
-}
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
 nav {
   background-color: #444444;
   color: #EEE7E8;
