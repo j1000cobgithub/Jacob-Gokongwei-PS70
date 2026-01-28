@@ -1,8 +1,8 @@
 body {
-    font: 20px "Century Gothic", CenturyGothic, sans-serif;
+    font: 20px 'Trebuchet MS', sans-serif;
     line-height: 1.8;
     color: #f3f3f3;
-    background-color: #646464;
+    background-color: #b0b0b0;
     padding-top: 0px !important;
   }
 
@@ -22,8 +22,26 @@ a {
   /*padding-bottom: 70px;*/
 }
 
+img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.image-container {
+  aspect-ratio: 16 / 9; /* Sets the shape */
+  width: 100%;
+  overflow: hidden;
+}
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
 nav {
-  background-color: #dcdcdc;
+  background-color: #444444;
   color: #EEE7E8;
   padding: 50px 0px;
 }
