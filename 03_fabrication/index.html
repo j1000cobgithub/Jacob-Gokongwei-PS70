@@ -5,6 +5,55 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
 
+<style>
+  
+  body.hoth-page {
+    background-image: url("./hoth.jpg"); 
+    background-size: cover;              
+    background-position: center center;  
+    background-repeat: no-repeat;
+    background-attachment: fixed;      
+    min-height: 100vh;
+  }
+
+  .textcontainer {
+    color: #1a1a1a;
+  }
+
+  .textcontainer h2 {
+    color: #1a1a1a;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  @keyframes flyBy {
+    0% {
+      left: -200px;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      left: 100vw;
+      opacity: 0;
+    }
+  }
+
+  .snowspeeder {
+    position: fixed;
+    top: 15%;
+    width: 200px;
+    height: auto;
+    animation: flyBy 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+</style>
 
 <nav class="navbar navbar-expand-sm navbar-dark" style="color: #EEE7E8;">
   <div style="align-items: center; justify-content: center;" class="container-fluid">
@@ -18,23 +67,81 @@
   </div>
 </nav>
 
-<body>
+<body class="hoth-page">
+
+<img class="snowspeeder" src="t47.png" alt="Luke's T-47 Snowspeeder">
+
 <xmp style="display:none;">
+
+</xmp>
+
 <div class="textcontainer">
 <p class="margin">   </p>
 
 <h3>Week 3: Hand Tools and Fabrication</h3>
 
-<h4>Kinetic Sculpture</h4>
+<p>
+  I wanted to make a kinetic sculpture that used many linkages to help me visualize the processes 
+  that might go into building my final project. I ended up making a Jansen Linkage to simulate walking motion.
+</p>
 
+<hr>
 
+<h2>Initial Design & Planning</h2>
 
+<p>
+  Bobby recommended that I research the Strandbeest and the Jansen Linkage, 
+  a famous mechanism that creates a smooth walking motion. I researched the build 
+  parameters to create this and thought about how to translate the motion into my sculpture.
+
+  I watched a lot of videos of how ATATs walk and the Jansen linkage was pretty close.
+</p>
+
+<hr>
+
+<h2>Building Process</h2>
+
+<p>
+  I used CAD to model all the linkage components and laser cut them from cardboard. I used wooden
+  sticks for my joints and laser cut cardboard caps to keep them from slipping out. 
+</p>
+
+<p><strong>Build Steps:</strong></p>
+<ol>
+  <li>CAD design of all linkage components</li>
+  <li>Laser cutting pieces</li>
+  <li>Assembling joints</li>
+  <li>Mounting to base</li>
+  <li>Testing and adjusting mechanism</li>
+</ol>
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:30px;">
+  <img class="tv-frame" src="CAD1.png" alt="CAD design 1" style="width:250px; height:250px;">
+  <img class="tv-frame" src="CAD2.png" alt="CAD design 2" style="width:250px; height:250px;">
+  <img class="tv-frame" src="CAD3.png" alt="CAD design 3" style="width:250px; height:250px;">
+</div>
+
+<hr>
+
+<h2>Final Product</h2>
+
+<p>
+  This week's assignment was really fun to make. I enjoyed thinking about how to make the linkages 
+  move and how to mount it to a board.
+</p>
+
+<div style="display:flex; justify-content:center; margin-top:30px;">
+  <video class="tv-frame" controls style="width:70%; max-width:900px;">
+    <source src="Ksculpture.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
 </div>
-</xmp>
+
 </body>
 
 <script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>

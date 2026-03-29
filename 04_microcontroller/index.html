@@ -4,9 +4,75 @@
 <title>PS70: Intro to Digital Fabrication </title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/arduino-light.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script> 
 
+<style>
+  .code-terminal {
+    background-color: #0d1117;
+    border: 3px solid #333;
+    border-radius: 12px;
+    padding: 0;
+    margin: 30px 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
 
-<nav class="navbar navbar-expand-sm navbar-dark" style=" color: #EEE7E8;">
+  .code-terminal-header {
+    background: linear-gradient(to bottom, #2d333b, #1c2128);
+    border-bottom: 1px solid #444c56;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .code-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .code-dot.red { background-color: #f85149; }
+  .code-dot.yellow { background-color: #d29922; }
+  .code-dot.green { background-color: #3fb950; }
+
+  .code-terminal-title {
+    margin-left: auto;
+    font-size: 12px;
+    color: #8b949e;
+    font-family: monospace;
+  }
+
+  .code-terminal-content {
+    padding: 20px;
+    background-color: #0d1117;
+  }
+
+  .code-terminal-content pre {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .code-terminal-content code {
+    color: #e6edf3;
+    font-family: 'Courier New', monospace;
+  }
+
+  .hljs {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+</style>
+
+<nav class="navbar navbar-expand-sm navbar-dark" style="color: #EEE7E8;">
   <div style="align-items: center; justify-content: center;" class="container-fluid">
     <div class="flexrow">
       <h2 class="nav-title">PS70 Fall 2024</h2>
@@ -21,21 +87,134 @@
 <body>
 <xmp style="display:none;">
 <div class="textcontainer">
-<p class="margin">   </p>
+<br></br>
 
 <h3>Week 4: Microcontroller Programming</h3>
 
-<h4>[Do Something with an arduino]</h4>
+This week was microcontroller programming
+
+<p class="margin"></p>
+
+<h2>Process & Demo</h2>
+
+My idea was to use PWM (analogWrite) to control the rotation speed of my motor.
+
+<div style="display:flex; justify-content:center; margin-top:30px; margin-bottom:40px;">
+  <video class="tv-frame" controls style="width:70%; max-width:900px;">
+    <source src="fastslow.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<p class="margin"></p>
+
+<h2>Circuit Diagram</h2>
+
+I had a simple circuit with an ESP32 and a motor driver.
 
 
+<div style="display:flex; justify-content:center; margin-top:30px; margin-bottom:40px;">
+  <img class="tv-frame" src="circuit.jpeg" alt="Circuit diagram" style="width:400px; height:auto;">
+</div>
+
+<p class="margin"></p>
+
+<h2>Code</h2>
+
+<div class="code-terminal">
+  <div class="code-terminal-header">
+    <span class="code-dot red"></span>
+    <span class="code-dot yellow"></span>
+    <span class="code-dot green"></span>
+    <span class="code-terminal-title">sketch.cpp</span>
+  </div>
+  <div class="code-terminal-content">
+    <pre><code class="language-cpp">void setup() {
+  pinMode(D0, OUTPUT);
+  pinMode(D1, OUTPUT);
+}
+
+void loop() {
+  analogWrite(D0, 150);
+  digitalWrite(D1, LOW);
+  delay(2000);
+  analogWrite(D0, 250);
+  digitalWrite(D1, LOW);
+  delay(2000);
+}</code></pre>
+  </div>
+</div>
+
+<p class="margin"></p>
 
 
+New Goals:
+- Utilize the SPW 2430 microphone such that when I shout, the ATAT will start running
+- Maybe just speaking can be walking but shouting can be running? Or maybe the louder you shout, the faster it goes? 
+
+<h2>MADE THE IMPROVEMENTS!</h2>
+So I used the SPW 2430 and wrote code such that above a certain threshold volume the walker would run.
+To get this threshold value I recorded the ambient noise of the room and tested what my voice peaked at 
+when I shouted. My code just utilized basic conditional statements.
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:30px; margin-bottom:40px;">
+  <img class="tv-frame" src="circuit1.jpg" alt="Build photo 1" style="width:300px; height:300px;">
+  <img class="tv-frame" src="circuit2.jpg" alt="Build photo 2" style="width:300px; height:300px;">
+</div>
+
+<div style="display:flex; justify-content:center; margin-top:30px; margin-bottom:40px;">
+  <video class="tv-frame" controls style="width:70%; max-width:900px;">
+    <source src="running.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<div class="code-terminal">
+  <div class="code-terminal-header">
+    <span class="code-dot red"></span>
+    <span class="code-dot yellow"></span>
+    <span class="code-dot green"></span>
+    <span class="code-terminal-title">sound_detection.cpp</span>
+  </div>
+  <div class="code-terminal-content">
+    <pre><code class="language-cpp">const int micPin = A0;
+const int micValue = 0;
+const int threshold = 1000;
+
+void setup() {
+  pinMode(D0, INPUT);
+  pinMode(D1, OUTPUT);
+  pinMode(D2, OUTPUT);
+  Serial.begin(9600);    
+  digitalWrite(D2, LOW);
+}
+
+void loop() {
+  int micValue = analogRead(micPin);
+  Serial.println(micValue);
+  delay(100); 
+
+  if (micValue < threshold) {
+    // if sound < threshold, just walk
+    analogWrite(D1, 150);
+    digitalWrite(D2, LOW);
+  } else {
+    // if sound > threshold, RUN
+    Serial.println("FASTER SPEED");
+    analogWrite(D1, 250);
+    digitalWrite(D2, LOW);
+    delay(5000);
+  }
+}</code></pre>
+  </div>
+</div>
 
 </div>
 </xmp>
+
 </body>
 
 <script src="../strapdown.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
