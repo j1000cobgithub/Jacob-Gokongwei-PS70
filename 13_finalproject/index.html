@@ -18,6 +18,78 @@
   </div>
 </nav>
 
+<style>
+  .code-terminal {
+    background-color: #0d1117;
+    border: 3px solid #333;
+    border-radius: 12px;
+    padding: 0;
+    margin: 30px 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
+
+  .code-terminal-header {
+    background: linear-gradient(to bottom, #2d333b, #1c2128);
+    border-bottom: 1px solid #444c56;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .code-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .code-dot.red { background-color: #f85149; }
+  .code-dot.yellow { background-color: #d29922; }
+  .code-dot.green { background-color: #3fb950; }
+
+  .code-terminal-title {
+    margin-left: auto;
+    font-size: 12px;
+    color: #8b949e;
+    font-family: monospace;
+  }
+
+  .code-terminal-content {
+    padding: 20px;
+    background-color: #0d1117;
+  }
+
+  .code-terminal-content pre {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: transparent !important;
+  }
+
+  .code-terminal-content code {
+    color: #e6edf3;
+    font-family: 'Courier New', monospace;
+    background-color: transparent !important;
+  }
+
+  .hljs {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+
+  .hljs-string,
+  .hljs-number,
+  .hljs-literal,
+  .hljs-attr {
+    background-color: transparent !important;
+  }
+</style>
+
 <body>
 <xmp style="display:none;">
 <div class="textcontainer">
@@ -61,17 +133,34 @@
 
 <h4 style="text-align: left;">Other Trials & Experiments</h4>
 <p style="text-align: left;"><b>Trial 1:</b> Making a sort of wheelbarrow extension for stability</p>
-<p style="text-align: left;">The wheelbarrow design was a failure. It did not provide the stability I was hoping for. Also I failed to consider where the wheelbarrow leg needed to be secured in order for it to roll properly. The leg itself shouldn't move but in my first design it could rotate. I needed to drill holes into it and secure it with some screws</p>
+<p style="text-align: left;">The wheelbarrow design was a failure. It did not provide the stability I was hoping for. Also I failed to consider where the wheelbarrow leg needed to be secured in order for it to roll properly. The wheelbarrow leg itself shouldn't move but in my first design it could rotate. I needed to drill holes into it and secure it with some screws.
+  When I finally stabilized the wheelbarrow leg and connected the motor to power, my 3D printed axle snapped. It could not handle the torque of the motor. I need to design a new axle that is stronger.
+</p>
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:30px; margin-bottom:40px;">
+  <img class="tv-frame" src="./images/wheelbarrow 1.jpg" alt="wheelbarrow 1" style="width:300px; height:300px;">
+  <img class="tv-frame" src="./images/wheelbarrow leg.jpg" alt="wheelbarrow leg" style="width:300px; height:300px;">
+</div>
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:30px; margin-bottom:40px;">
+  <img class="tv-frame" src="./images/broken axle.jpg" alt="broken wheelbarrow" style="width:300px; height:300px;">
+</div>
 
 <p style="text-align: left;"><b>Trial 2:</b> Trying a sled instead of a wheelbarrow</p>
-<p style="text-align: left;">[Outcome and what you learned]</p>
+<p style="text-align: left;">The sled configuration was definitely much more stable. The system could stand on its own.  Next, I need to work on connecting a battery to the walker instead of using the power supply.
+  I might also have to change the motor to something more powerful. When I was doing some testing the leg walking motion was clearly working when I suspended the linkages in air
+  but the moment I put it down on the ground it struggled to walk. This means I need to work on reducing friction with the floor too.
+</p>
 
-<h4 style="text-align: left;">Future Improvements</h4>
-<p style="text-align: left;">Next steps are to build a more stable version that can balance properly, currently working on a wheelbarrow configuration. Also need to work on connecting a battery to the walker instead of using the power supply.</p>
+<div style="display: flex; justify-content: center;">
+  <video width="400px" controls style="margin: 20px 0;">
+    <source src="./videos/v2sled.MOV" type="video/mp4">
+  </video>
+</div>
 
-<p style="text-align: left;"><b>Additional goals:</b></p>
+<p style="text-align: left;"><b>Possible adjustments to project:</b></p>
 <ul style="text-align: left;">
-  <li>[Future improvement 1]</li>
+  <li>Wheels (possibly include servos to control directionality) - the ATAT would turn into a wheelbarrow toy</li>
   <li>[Future improvement 2]</li>
   <li>[Future improvement 3]</li>
 </ul>
