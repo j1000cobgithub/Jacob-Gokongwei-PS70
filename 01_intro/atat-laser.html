@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AT-AT Laser Fire</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .atat-scene {
+            position: relative;
+            width: 400px;
+            height: 300px;
+        }
+
+        /* Simple AT-AT structure */
+        .atat {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+        }
+
+        /* Body */
+        .body {
+            width: 100px;
+            height: 50px;
+            background: #8b9199;
+            border: 2px solid #555;
+            position: relative;
+            box-shadow: inset 0 -4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Head/Cockpit */
+        .head {
+            width: 45px;
+            height: 35px;
+            background: #8b9199;
+            border: 2px solid #555;
+            position: absolute;
+            top: -40px;
+            left: -10px;
+            box-shadow: inset 0 -3px 6px rgba(0,0,0,0.3);
+        }
+
+        /* Red viewport */
+        .viewport {
+            width: 6px;
+            height: 6px;
+            background: #ff0000;
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+            right: 8px;
+            box-shadow: 0 0 8px #ff0000, 0 0 12px #ff0000;
+            animation: viewport-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes viewport-glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Neck connecting head to body */
+        .neck {
+            width: 8px;
+            height: 20px;
+            background: #8b9199;
+            border: 2px solid #555;
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+        }
+
+        /* Chin guns */
+        .chin-gun {
+            width: 12px;
+            height: 4px;
+            background: #555;
+            position: absolute;
+            bottom: -6px;
+        }
+
+        .chin-gun.left {
+            left: 5px;
+        }
+
+        .chin-gun.right {
+            right: 5px;
+        }
+
+        /* Simple legs - just static supports */
+        .leg {
+            width: 14px;
+            height: 80px;
+            background: linear-gradient(to right, #8b9199, #6b7280);
+            border: 2px solid #555;
+            position: absolute;
+            bottom: -80px;
+        }
+
+        .leg.fl { left: 10px; }
+        .leg.fr { right: 0; }
+        .leg.bl { left: 30px; }
+        .leg.br { right: 20px; }
+
+        .foot {
+            width: 22px;
+            height: 10px;
+            background: #555;
+            border: 2px solid #333;
+            position: absolute;
+            bottom: -12px;
+            left: -4px;
+        }
+
+        /* LASER BEAM - The star of the show! */
+        .laser-container {
+            position: absolute;
+            top: 5px;
+            left: 45px;
+            width: 300px;
+            height: 4px;
+        }
+
+        .laser-beam {
+            position: absolute;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(to right, 
+                rgba(255, 0, 0, 0) 0%,
+                rgba(255, 50, 50, 1) 10%,
+                rgba(255, 255, 255, 1) 50%,
+                rgba(255, 50, 50, 1) 90%,
+                rgba(255, 0, 0, 0) 100%
+            );
+            box-shadow: 
+                0 0 10px rgba(255, 0, 0, 0.8),
+                0 0 20px rgba(255, 0, 0, 0.6),
+                0 0 30px rgba(255, 0, 0, 0.4);
+            animation: laser-fire 3s ease-in-out infinite;
+            transform-origin: left center;
+            width: 0;
+        }
+
+        @keyframes laser-fire {
+            0% { 
+                width: 0;
+                opacity: 0;
+            }
+            5% {
+                width: 280px;
+                opacity: 1;
+            }
+            15% {
+                width: 280px;
+                opacity: 1;
+            }
+            20% {
+                width: 0;
+                opacity: 0;
+            }
+            100% {
+                width: 0;
+                opacity: 0;
+            }
+        }
+
+        /* Impact flash at the end of the laser */
+        .impact {
+            position: absolute;
+            left: 280px;
+            top: -8px;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 150, 0, 0.8) 30%,
+                rgba(255, 0, 0, 0.4) 60%,
+                rgba(255, 0, 0, 0) 100%
+            );
+            border-radius: 50%;
+            opacity: 0;
+            animation: impact-flash 3s ease-in-out infinite;
+        }
+
+        @keyframes impact-flash {
+            0%, 4%, 20%, 100% { 
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            5% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+            10% {
+                opacity: 0.8;
+                transform: scale(1.2);
+            }
+            15% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+        }
+
+        /* Ground */
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #555;
+        }
+
+        /* Info text */
+        .info {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+        }
+
+        /* Muzzle flash */
+        .muzzle-flash {
+            position: absolute;
+            left: -8px;
+            top: -4px;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle,
+                rgba(255, 255, 255, 1) 0%,
+                rgba(255, 200, 100, 0.8) 40%,
+                rgba(255, 0, 0, 0) 100%
+            );
+            border-radius: 50%;
+            opacity: 0;
+            animation: muzzle-flash 3s ease-in-out infinite;
+        }
+
+        @keyframes muzzle-flash {
+            0%, 4%, 20%, 100% { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            5% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+            7% {
+                opacity: 0.6;
+                transform: scale(1.2);
+            }
+            10% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="atat-scene">
+        <div class="ground"></div>
+        
+        <div class="atat">
+            <!-- Body with legs -->
+            <div class="body">
+                <div class="leg fl"><div class="foot"></div></div>
+                <div class="leg fr"><div class="foot"></div></div>
+                <div class="leg bl"><div class="foot"></div></div>
+                <div class="leg br"><div class="foot"></div></div>
+            </div>
+            
+            <!-- Head assembly -->
+            <div class="head">
+                <div class="neck"></div>
+                <div class="viewport"></div>
+                <div class="chin-gun left"></div>
+                <div class="chin-gun right"></div>
+                
+                <!-- LASER! -->
+                <div class="laser-container">
+                    <div class="muzzle-flash"></div>
+                    <div class="laser-beam"></div>
+                    <div class="impact"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">AT-AT firing chin-mounted laser cannon</div>
+    </div>
+</body>
+</html>
